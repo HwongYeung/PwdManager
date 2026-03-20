@@ -1,0 +1,20 @@
+<!-- 自定义导航栏组件 -->
+<view class="custom-navbar" style="height: {{navbarHeight}}px; padding-top: {{statusBarHeight}}px;">
+  <view class="navbar-content" style="height: {{titleBarHeight}}px;">
+    <!-- 左侧返回按钮 -->
+    <view wx:if="{{showBack}}" class="navbar-left" bindtap="onBack">
+      <t-icon name="chevron-left" size="24px" color="{{textColor}}"></t-icon>
+    </view>
+    
+    <!-- 标题 -->
+    <view class="navbar-title" style="color: {{textColor}};">{{title}}</view>
+    
+    <!-- 右侧操作按钮 -->
+    <view class="navbar-right">
+      <slot name="right"></slot>
+    </view>
+  </view>
+</view>
+
+<!-- 占位区域，防止内容被导航栏遮挡 -->
+<view class="navbar-placeholder" style="height: {{navbarHeight}}px;"></view>

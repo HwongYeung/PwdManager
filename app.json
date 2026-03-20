@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/pin-setup/pin-setup",
+    "pages/pin-verify/pin-verify",
+    "pages/password-list/password-list",
+    "pages/password-detail/password-detail",
+    "pages/password-edit/password-edit",
+    "pages/settings/settings",
+    "pages/crypto-demo/crypto-demo"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "忘记密码管家",
+    "navigationBarBackgroundColor": "#1976D2"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#1976D2",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/password-list/password-list",
+        "text": "密码管理"
+      },
+      {
+        "pagePath": "pages/crypto-demo/crypto-demo",
+        "text": "算法演示"
+      }
+    ]
+  },
+  "usingComponents": {
+    "t-button": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/button/button",
+    "t-input": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/input/input",
+    "t-cell": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/cell/cell",
+    "t-cell-group": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/cell-group/cell-group",
+    "t-icon": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/icon/icon",
+    "t-toast": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/toast/toast",
+    "t-dialog": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/dialog/dialog",
+    "t-search": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/search/search",
+    "t-tag": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/tag/tag",
+    "t-fab": "miniprogram_npm/tdesign-miniprogram/miniprogram_dist/fab/fab"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

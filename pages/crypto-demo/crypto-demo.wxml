@@ -1,0 +1,196 @@
+<!--crypto-demo.wxml-->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y>
+    <!-- 顶部说明 -->
+    <view class="intro-card">
+      <view class="intro-icon">🔐</view>
+      <view class="intro-title">加密算法演示</view>
+      <view class="intro-desc">
+        本页面展示您的密码数据是如何被加密保护的。输入任意内容和模拟PIN码，实时查看加密与解密的完整过程。
+      </view>
+    </view>
+
+    <!-- 算法说明 -->
+    <view class="algo-card">
+      <view class="algo-title">使用的算法</view>
+      <view class="algo-items">
+        <view class="algo-item">
+          <view class="algo-badge">PBKDF2</view>
+          <view class="algo-text">密钥派生 (10000次迭代)</view>
+        </view>
+        <view class="algo-item">
+          <view class="algo-badge">AES-256</view>
+          <view class="algo-text">对称加密 (CBC模式)</view>
+        </view>
+        <view class="algo-item">
+          <view class="algo-badge">SHA-256</view>
+          <view class="algo-text">PIN码哈希验证</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 输入区域 -->
+    <view class="input-card">
+      <view class="card-title">输入演示数据</view>
+
+      <!-- 快捷示例 -->
+      <view class="examples">
+        <view class="examples-label">快捷示例：</view>
+        <view class="examples-list">
+          <view
+            wx:for="{{examples}}"
+            wx:key="label"
+            class="example-tag"
+            data-index="{{index}}"
+            bindtap="useExample"
+          >
+            {{item.label}}
+          </view>
+        </view>
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">明文内容（模拟您的密码）</view>
+        <textarea
+          class="text-input"
+          placeholder="输入任意文字，例如：MyPassword@123"
+          value="{{inputText}}"
+          bindinput="onInputText"
+          maxlength="100"
+        ></textarea>
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">模拟 PIN 码（6位数字）</view>
+        <input
+          class="key-input"
+          type="number"
+          placeholder="输入6位数字，例如：168920"
+          value="{{inputKey}}"
+          bindinput="onInputKey"
+          maxlength="6"
+        />
+      </view>
+
+      <view class="btn-group">
+        <t-button
+          theme="primary"
+          size="large"
+          loading="{{isProcessing}}"
+          disabled="{{isProcessing}}"
+          bind:tap="runDemo"
+        >
+          {{isProcessing ? '演示中...' : '开始加密演示'}}
+        </t-button>
+      </view>
+    </view>
+
+    <!-- 演示步骤结果 -->
+    <view wx:if="{{steps.length > 0}}" class="steps-card">
+      <view class="card-title">加密流程</view>
+
+      <view
+        wx:for="{{steps}}"
+        wx:key="index"
+        class="step-item {{item.isError ? 'step-error' : ''}}"
+      >
+        <view class="step-header">
+          <view class="step-number {{item.isError ? 'error' : ''}}">{{item.index}}</view>
+          <view class="step-title">{{item.title}}</view>
+        </view>
+        <view class="step-desc">{{item.desc}}</view>
+
+        <view wx:if="{{item.input}}" class="step-data">
+          <view class="data-label">输入</view>
+          <view class="data-content input-data">{{item.input}}</view>
+        </view>
+
+        <view class="step-data">
+          <view class="data-label">{{item.isError ? '结果' : '输出'}}</view>
+          <view class="data-content {{item.isError ? 'error-data' : 'output-data'}}">{{item.result}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 验证结果 -->
+    <view wx:if="{{hasResult}}" class="result-card">
+      <view class="result-header">
+        <view class="result-icon">{{decryptedText === inputText ? '✅' : '❌'}}</view>
+        <view class="result-title">
+          {{decryptedText === inputText ? '解密成功！数据完整还原' : '解密结果不匹配'}}
+        </view>
+      </view>
+
+      <view class="comparison">
+        <view class="compare-item">
+          <view class="compare-label">原始明文</view>
+          <view class="compare-value original">{{inputText}}</view>
+        </view>
+        <view class="compare-arrow">
+          <t-icon name="arrow-down" size="24px" color="#1976D2"></t-icon>
+          <text class="arrow-label">加密 → 密文 → 解密</text>
+          <t-icon name="arrow-down" size="24px" color="#1976D2"></t-icon>
+        </view>
+        <view class="compare-item">
+          <view class="compare-label">解密还原</view>
+          <view class="compare-value decrypted">{{decryptedText}}</view>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="result-actions">
+        <t-button
+          theme="danger"
+          variant="outline"
+          size="large"
+          bind:tap="runWrongKeyDemo"
+        >
+          测试错误密钥解密
+        </t-button>
+        <t-button
+          theme="default"
+          size="large"
+          bind:tap="resetDemo"
+        >
+          重新演示
+        </t-button>
+      </view>
+    </view>
+
+    <!-- 安全说明 -->
+    <view class="security-card">
+      <view class="security-title">为什么您的数据是安全的？</view>
+      <view class="security-item">
+        <view class="security-num">1</view>
+        <view class="security-text">
+          <view class="security-sub">PIN码永远不会被存储</view>
+          <view class="security-detail">系统只存储 PIN 的哈希值，无法反向推导出您的 PIN 码</view>
+        </view>
+      </view>
+      <view class="security-item">
+        <view class="security-num">2</view>
+        <view class="security-text">
+          <view class="security-sub">每条密码都经过 AES-256 加密</view>
+          <view class="security-detail">即便数据泄露，没有 PIN 码也无法读取任何内容</view>
+        </view>
+      </view>
+      <view class="security-item">
+        <view class="security-num">3</view>
+        <view class="security-text">
+          <view class="security-sub">随机盐值保护</view>
+          <view class="security-detail">相同密码每次加密的结果都不同，防止彩虹表攻击</view>
+        </view>
+      </view>
+      <view class="security-item">
+        <view class="security-num">4</view>
+        <view class="security-text">
+          <view class="security-sub">数据纯本地存储</view>
+          <view class="security-detail">所有数据只在您的手机上，不会上传到任何服务器</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部间距 -->
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+</view>

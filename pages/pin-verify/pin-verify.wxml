@@ -1,0 +1,95 @@
+<!--pin-verify.wxml-->
+<view class="container">
+  <!-- 标题区域 -->
+  <view class="header">
+    <view class="app-icon">🔐</view>
+    <view class="title">忘记密码管家</view>
+    <view class="subtitle">请输入PIN码</view>
+  </view>
+
+  <!-- PIN码输入区域 -->
+  <view class="pin-input-area">
+    <view class="pin-dots">
+      <view 
+        wx:for="{{pinInputs}}" 
+        wx:key="index"
+        class="pin-dot {{item ? 'filled' : ''}} {{isVerifying ? 'verifying' : ''}}"
+      >
+        <view wx:if="{{item}}" class="dot-inner"></view>
+      </view>
+    </view>
+    
+    <view class="hint">
+      {{isVerifying ? '验证中...' : '输入6位数字PIN码解锁'}}
+    </view>
+    
+    <view wx:if="{{errorCount > 0}}" class="error-hint">
+      错误次数: {{errorCount}}/{{maxErrors}}
+    </view>
+  </view>
+
+  <!-- 数字键盘 -->
+  <view class="keyboard">
+    <view class="keyboard-row">
+      <view 
+        wx:for="{{[1,2,3]}}" 
+        wx:key="*this"
+        class="key-button number {{isVerifying ? 'disabled' : ''}}"
+        data-number="{{item}}"
+        bindtap="onNumberInput"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <view class="keyboard-row">
+      <view 
+        wx:for="{{[4,5,6]}}" 
+        wx:key="*this"
+        class="key-button number {{isVerifying ? 'disabled' : ''}}"
+        data-number="{{item}}"
+        bindtap="onNumberInput"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <view class="keyboard-row">
+      <view 
+        wx:for="{{[7,8,9]}}" 
+        wx:key="*this"
+        class="key-button number {{isVerifying ? 'disabled' : ''}}"
+        data-number="{{item}}"
+        bindtap="onNumberInput"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <view class="keyboard-row">
+      <view class="key-button empty"></view>
+      
+      <view 
+        class="key-button number {{isVerifying ? 'disabled' : ''}}"
+        data-number="0"
+        bindtap="onNumberInput"
+      >
+        0
+      </view>
+      
+      <view 
+        class="key-button action {{isVerifying ? 'disabled' : ''}}"
+        bindtap="onDelete"
+      >
+        <t-icon name="backspace" size="24px" color="#666"></t-icon>
+      </view>
+    </view>
+  </view>
+
+  <!-- 忘记PIN码 -->
+  <view class="forget-pin">
+    <view class="forget-link" bindtap="onForgetPin">
+      忘记PIN码？
+    </view>
+  </view>
+</view>

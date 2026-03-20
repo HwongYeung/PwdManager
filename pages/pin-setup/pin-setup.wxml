@@ -1,0 +1,92 @@
+<!--pin-setup.wxml-->
+<view class="container">
+  <!-- 标题区域 -->
+  <view class="header">
+    <view class="app-icon">🔐</view>
+    <view class="title">忘记密码管家</view>
+    <view class="subtitle">
+      {{step === 1 ? '设置PIN码' : '确认PIN码'}}
+    </view>
+  </view>
+
+  <!-- PIN码输入区域 -->
+  <view class="pin-input-area">
+    <view class="pin-dots">
+      <view 
+        wx:for="{{step === 1 ? pinInputs : confirmPinInputs}}" 
+        wx:key="index"
+        class="pin-dot {{item ? 'filled' : ''}}"
+      >
+        <view wx:if="{{item}}" class="dot-inner"></view>
+      </view>
+    </view>
+    
+    <view wx:if="{{step === 1}}" class="hint">请设置6位数字PIN码</view>
+    <view wx:else class="hint">请再次输入PIN码确认</view>
+  </view>
+
+  <!-- 数字键盘 -->
+  <view class="keyboard">
+    <view class="keyboard-row">
+      <view 
+        wx:for="{{[1,2,3]}}" 
+        wx:key="*this"
+        class="key-button number"
+        data-number="{{item}}"
+        bindtap="onNumberInput"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <view class="keyboard-row">
+      <view 
+        wx:for="{{[4,5,6]}}" 
+        wx:key="*this"
+        class="key-button number"
+        data-number="{{item}}"
+        bindtap="onNumberInput"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <view class="keyboard-row">
+      <view 
+        wx:for="{{[7,8,9]}}" 
+        wx:key="*this"
+        class="key-button number"
+        data-number="{{item}}"
+        bindtap="onNumberInput"
+      >
+        {{item}}
+      </view>
+    </view>
+    
+    <view class="keyboard-row">
+      <view 
+        wx:if="{{step === 2}}"
+        class="key-button action"
+        bindtap="onBack"
+      >
+        <t-icon name="chevron-left" size="24px" color="#666"></t-icon>
+      </view>
+      <view wx:else class="key-button empty"></view>
+      
+      <view 
+        class="key-button number"
+        data-number="0"
+        bindtap="onNumberInput"
+      >
+        0
+      </view>
+      
+      <view 
+        class="key-button action"
+        bindtap="onDelete"
+      >
+        <t-icon name="backspace" size="24px" color="#666"></t-icon>
+      </view>
+    </view>
+  </view>
+</view>

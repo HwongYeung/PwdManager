@@ -1,0 +1,66 @@
+<!--settings.wxml-->
+<view class="container">
+  <scroll-view class="settings-content" scroll-y>
+    <!-- 安全设置 -->
+    <view class="section">
+      <view class="section-title">安全设置</view>
+      <t-cell-group>
+        <t-cell
+          title="修改PIN码"
+          right-icon="chevron-right"
+          bind:click="changePin"
+        />
+        <t-cell
+          title="自动锁定"
+          description="{{settings.auto_lock === 0 ? '永不' : (settings.auto_lock < 60 ? settings.auto_lock + '秒' : (settings.auto_lock / 60) + '分钟')}}"
+          right-icon="chevron-right"
+          bind:click="changeAutoLock"
+        />
+      </t-cell-group>
+    </view>
+
+    <!-- 数据管理 -->
+    <view class="section">
+      <view class="section-title">数据管理</view>
+      <t-cell-group>
+        <t-cell
+          title="导出数据"
+          description="导出加密的密码数据"
+          right-icon="chevron-right"
+          bind:click="exportData"
+        />
+        <t-cell
+          title="清除所有数据"
+          description="删除所有密码和设置"
+          right-icon="chevron-right"
+          bind:click="clearAllData"
+        />
+      </t-cell-group>
+    </view>
+
+    <!-- 关于 -->
+    <view class="section">
+      <view class="section-title">关于</view>
+      <t-cell-group>
+        <t-cell
+          title="关于忘记密码管家"
+          description="版本信息和使用说明"
+          right-icon="chevron-right"
+          bind:click="showAbout"
+        />
+      </t-cell-group>
+    </view>
+
+    <!-- 安全提示 -->
+    <view class="security-notice">
+      <view class="notice-icon">🔒</view>
+      <view class="notice-title">安全提示</view>
+      <view class="notice-content">
+        • 所有密码数据使用加密算法存储在本地
+        • 不会上传到任何服务器
+        • 请定期备份重要密码数据
+        • 忘记PIN码将无法恢复数据
+      </view>
+    </view>
+  </scroll-view>
+</view>

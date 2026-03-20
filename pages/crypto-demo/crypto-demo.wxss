@@ -1,0 +1,432 @@
+/* crypto-demo.wxss */
+.container {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.scroll-content {
+  height: 100%;
+  padding: 20rpx;
+}
+
+/* 顶部介绍卡片 */
+.intro-card {
+  background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+  border-radius: 16rpx;
+  padding: 48rpx 32rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.intro-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.intro-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 16rpx;
+}
+
+.intro-desc {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* 算法说明卡片 */
+.algo-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.algo-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+}
+
+.algo-items {
+  display: flex;
+  gap: 16rpx;
+}
+
+.algo-item {
+  flex: 1;
+  text-align: center;
+}
+
+.algo-badge {
+  display: inline-block;
+  background: rgba(25, 118, 210, 0.1);
+  color: #1976D2;
+  font-size: 22rpx;
+  font-weight: bold;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.algo-text {
+  font-size: 22rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 输入卡片 */
+.input-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 28rpx;
+}
+
+.examples {
+  margin-bottom: 28rpx;
+}
+
+.examples-label {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.examples-list {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.example-tag {
+  background: rgba(25, 118, 210, 0.08);
+  color: #1976D2;
+  font-size: 24rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 24rpx;
+  border: 1rpx solid rgba(25, 118, 210, 0.2);
+  transition: all 0.2s ease;
+}
+
+.example-tag:active {
+  background: rgba(25, 118, 210, 0.2);
+  transform: scale(0.95);
+}
+
+.input-group {
+  margin-bottom: 24rpx;
+}
+
+.input-label {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+
+.text-input {
+  width: 100%;
+  min-height: 100rpx;
+  padding: 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #fafafa;
+  box-sizing: border-box;
+}
+
+.text-input:focus {
+  border-color: #1976D2;
+  background: white;
+}
+
+.key-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  background: #fafafa;
+  box-sizing: border-box;
+  letter-spacing: 12rpx;
+  text-align: center;
+}
+
+.key-input:focus {
+  border-color: #1976D2;
+  background: white;
+}
+
+.btn-group {
+  margin-top: 12rpx;
+}
+
+/* 演示步骤卡片 */
+.steps-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.step-item {
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  border-radius: 12rpx;
+  background: #f8f9fa;
+  border-left: 6rpx solid #1976D2;
+  animation: fadeInUp 0.4s ease;
+}
+
+.step-item.step-error {
+  border-left-color: #f44336;
+  background: #fff5f5;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.step-number {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  background: #1976D2;
+  color: white;
+  font-size: 24rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.step-number.error {
+  background: #f44336;
+}
+
+.step-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.step-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+}
+
+.step-data {
+  margin-bottom: 12rpx;
+}
+
+.step-data:last-child {
+  margin-bottom: 0;
+}
+
+.data-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 6rpx;
+}
+
+.data-content {
+  font-size: 24rpx;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  word-break: break-all;
+  line-height: 1.5;
+  font-family: 'Courier New', monospace;
+}
+
+.input-data {
+  background: rgba(25, 118, 210, 0.06);
+  color: #1976D2;
+}
+
+.output-data {
+  background: rgba(76, 175, 80, 0.06);
+  color: #2e7d32;
+}
+
+.error-data {
+  background: rgba(244, 67, 54, 0.06);
+  color: #c62828;
+}
+
+/* 验证结果卡片 */
+.result-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.4s ease;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32rpx;
+}
+
+.result-icon {
+  font-size: 48rpx;
+  margin-right: 16rpx;
+}
+
+.result-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.comparison {
+  margin-bottom: 32rpx;
+}
+
+.compare-item {
+  padding: 20rpx;
+  border-radius: 12rpx;
+  background: #f8f9fa;
+}
+
+.compare-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.compare-value {
+  font-size: 30rpx;
+  font-weight: bold;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+}
+
+.compare-value.original {
+  color: #1976D2;
+}
+
+.compare-value.decrypted {
+  color: #2e7d32;
+}
+
+.compare-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 0;
+  gap: 12rpx;
+}
+
+.arrow-label {
+  font-size: 24rpx;
+  color: #1976D2;
+  font-weight: 500;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+/* 安全说明卡片 */
+.security-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.security-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 28rpx;
+  text-align: center;
+}
+
+.security-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28rpx;
+}
+
+.security-item:last-child {
+  margin-bottom: 0;
+}
+
+.security-num {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+  color: white;
+  font-size: 24rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  margin-top: 4rpx;
+  flex-shrink: 0;
+}
+
+.security-text {
+  flex: 1;
+}
+
+.security-sub {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.security-detail {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.bottom-spacer {
+  height: 140rpx;
+}

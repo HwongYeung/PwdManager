@@ -1,0 +1,153 @@
+/* pin-verify.wxss */
+.container {
+  height: 100vh;
+  background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 40rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 120rpx;
+}
+
+.app-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pin-input-area {
+  text-align: center;
+  margin-bottom: 120rpx;
+}
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.pin-dot {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.pin-dot.filled {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pin-dot.verifying {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.dot-inner {
+  width: 20rpx;
+  height: 20rpx;
+  background: white;
+  border-radius: 50%;
+}
+
+.hint {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10rpx;
+}
+
+.error-hint {
+  font-size: 24rpx;
+  color: #ffcdd2;
+}
+
+.keyboard {
+  width: 100%;
+  max-width: 600rpx;
+  margin-bottom: 60rpx;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.key-button {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.key-button.number {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.key-button.number:active:not(.disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0.95);
+}
+
+.key-button.action {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.key-button.action:active:not(.disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.95);
+}
+
+.key-button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.key-button.empty {
+  background: transparent;
+}
+
+.forget-pin {
+  margin-top: auto;
+}
+
+.forget-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28rpx;
+  text-decoration: underline;
+  padding: 20rpx;
+}
