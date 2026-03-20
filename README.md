@@ -17,6 +17,11 @@
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
 </p>
 
+<p align="center">
+  <a href="https://www.wangjimima.com/">官网</a> &nbsp;·&nbsp;
+  <a href="./README_EN.md">English</a>
+</p>
+
 ---
 
 ## 立即体验
